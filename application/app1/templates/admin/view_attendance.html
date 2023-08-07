@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Attendance</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/ionicons/dist/css/ionicons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.addons.css' %}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{% static 'assets/css/shared/style.css' %}">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/demo_1/style.css' %}">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" />
+    <style>
+
+button {
+ font-size: 18px;
+ display: inline-block;
+ outline: 0;
+ border: 0;
+ cursor: pointer;
+ will-change: box-shadow,transform;
+ background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+ box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+ padding: 0 2em;
+ border-radius: 0.3em;
+ color: #fff;
+ height: 2.6em;
+ text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+ transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+button:hover {
+ box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+ transform: translateY(-0.1em);
+}
+
+button:active {
+ box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+ transform: translateY(0em);
+}
+      #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      
+      #customers tr:nth-child(even){background-color: #f2f2f2;}
+      
+      #customers tr:hover {background-color: #ddd;}
+      
+      #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+      }
+        </style>
+  </head>
+
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+          <a class="navbar-brand brand-logo" href="#">Admin Home </a>
+          <a class="navbar-brand brand-logo-mini" href="index.html">
+            <img src="{% static 'assets/images/logo-mini.svg' %}" alt="logo" /> </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+         
+    
+          <ul class="navbar-nav ml-auto">
+            
+            
+            <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+              <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                <img class="img-xs rounded-circle" src="{% static 'assets/images/faces/face8.jpg' %}" alt="Profile image"> </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                <div class="dropdown-header text-center">
+                  <img class="img-md rounded-circle" src="{% static 'assets/images/faces/face8.jpg' %}" alt="Profile image">
+                  <p class="mb-1 mt-3 font-weight-semibold">Admin</p>
+                </div>
+                <a class="dropdown-item"  href="{% url 'LoginPage' %}" >Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="profile-image">
+                  <img class="img-xs rounded-circle" src="{% static 'assets/images/faces/face8.jpg' %}" alt="profile image">
+                  <div class="dot-indicator bg-success"></div>
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">Admin </p>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item nav-category">Main Menu</li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'AdminHome' %}">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                <i class="menu-icon typcn typcn-coffee"></i>
+                <span class="menu-title">Student Management</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Regestudent' %}">Add new student</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'View_employee' %}">View/Edit student details</a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Admin_add_subject' %}">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">Add Subjects</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Admin_view_attendance' %}">
+                <i class="menu-icon typcn typcn-document-text"></i>
+                <span class="menu-title">View Attendance details</span>
+              </a>
+            </li>
+         
+         
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'LoginPage' %}">Logout</a>
+            </li>
+            
+            
+            
+         
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+
+          <center>
+            <div style="width: 80%;height: 800px;margin-top: 50px;">
+              <h3>View attendance</h3>
+              
+         
+                <div class="col-md-9" style="margin-top: 50px;">
+                  <label for="addUserField" >Student Username </label><br>
+
+                  <input type="text" class="form-control" id="empnm" name="name" style="width: 300px;">
+                </div>
+                <br>
+                <div class="col-md-9">
+                  <label for="addUserField" >Select Month </label><br>
+
+                  <input type="month" class="form-control" id="mnth" name="name" style="width: 300px;">
+                </div><br>
+                <button id="btn1">Get data</button>
+                <h5 style="margin-top: 30px;" id="nameid"></h5>
+                <h5 style="margin-top: 30px;" id="deptid"></h5>
+                <label id="labelid" style="color: tomato;"></label>
+                <table id="customers" >
+                  <thead>
+                    <tr><th>Date</th><th>Subject</th><th>Punch in</th><th>Punch out</th></tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+              </table>
+  </div>
+  
+ 
+  
+            
+  
+          </center>          <!-- partial:partials/_footer.html -->
+      
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <script src="{% static 'assets/vendors/js/vendor.bundle.addons.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/shared/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/shared/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'assets/js/demo_1/dashboard.js' %}"></script>
+    <!-- End custom js for this page-->
+    <script src="{% static 'assets/js/shared/jquery.cookie.js' %}" type="text/javascript"></script>
+  </body>
+  <script src="{% static 'assets/jquery-2.1.4.min.js' %}"></script>
+  <script>
+    $("#btn1").click(function(){
+
+    mnth=$('#mnth').val();
+    empnm=$('#empnm').val();
+    if(empnm==""){
+      alert("Enter Employee username")
+    }
+    
+      
+    else if(mnth==""){
+      alert("Please Select a month")
+    }
+    
+      else{
+        $.ajax({url:"/get_attendance_data/",
+          data:{
+              
+              "mnth":mnth,
+              "empnm":empnm,
+  
+          },
+      success:function(da){
+        if(da.datalist.length!=0){
+
+
+        
+      
+        document.getElementById('nameid').innerHTML= "Student Name: "+ da.name;
+        document.getElementById('deptid').innerHTML= "Department: "+ da.dept;
+        document.getElementById('labelid').innerHTML= "Student presented days in selected month are listed below";
+        $("#customers tr").remove(); 
+          var rows="<tr><th>Date</th><th>Subject</th><th>Punch in</th><th>Punch out</th></tr>"
+          
+        for(i=0;i<da.datalist.length;i++){
+          rows += "<tr><td>" + da.datalist[i][0] + "</td><td>" + da.datalist[i][3] + "</td><td>" + da.datalist[i][1] + "</td><td>" + da.datalist[i][2] + "</td></tr>";
+          console.log(da.datalist[i][0])
+        }
+        $( rows ).appendTo( "#customers tbody" );
+  
+      }
+      else{
+        alert("no data found")
+        window.location.href="{% url 'Admin_view_attendance' %}"
+      }
+    }
+    });
+    
+      }
+      
+  }); 
+  </script>
+</html>

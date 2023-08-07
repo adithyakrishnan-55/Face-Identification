@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Medical Store Registration</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/ionicons/dist/css/ionicons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.addons.css' %}">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'assets/css/shared/style.css' %}">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{% static 'assets/css/demo_1/style.css' %}">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" />
+   
+  </head>
+  <script src="{% static 'assets/jquery-2.1.4.min.js' %}"></script>
+  
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        
+        <div class="navbar-menu-wrapper d-flex align-items-center" style="width: 100%;">
+         <h2>Register New Medical store</h2>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+       
+        <div class="main-panel">
+          <center>
+
+            <div style="width: 80%;background-color: rgb(253, 248, 242);height: 600px;padding-top: 20px;margin-left: 200px;">
+              <h3>Register your medical store here</h3>
+              <div style="width: 70%;">
+                          <div class="form-group" >
+                            <input type="text" class="form-control form-control-lg" id="fname" placeholder="Name of Medical Store">
+                          </div>
+                          <div class="form-group">
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="EMAIL" required="">
+                          </div>
+                          <div class="form-group">
+                            <input type="number" class="form-control form-control-lg" maxlength=10 id="phone"  placeholder="PHONE">
+                          </div>
+
+                          <div class="form-group">
+
+                            <input type="text" class="form-control form-control-lg" id="addr" placeholder="ADDRESS">
+                          </div>
+                          <div class="form-group">
+
+                            <input type="number" class="form-control form-control-lg" id="lat" placeholder="Loacation Latitude">
+                          </div>
+                          <div class="form-group">
+
+                            <input type="number" class="form-control form-control-lg" id="long" placeholder="Loacation Longitude">
+                          </div>
+                          <div class="form-group">
+
+                            <input type="text" class="form-control form-control-lg" id="uname" placeholder="USERNAME">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="pswrd" placeholder="PASSWORD">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" id="pswrd2" placeholder="CONFIRM PASSWORD">
+                          </div>
+                          <div class="mt-3">
+                            <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" id="regbtn">REGISTER</a>
+                          </div>
+                        
+            </div>
+          
+      </center>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{% static 'assets/vendors/js/vendor.bundle.base.js' %}"></script>
+    <script src="{% static 'assets/vendors/js/vendor.bundle.addons.js' %}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="{% static 'assets/js/shared/off-canvas.js' %}"></script>
+    <script src="{% static 'assets/js/shared/misc.js' %}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="{% static 'assets/js/demo_1/dashboard.js' %}"></script>
+    <!-- End custom js for this page-->
+    <!-- <script src="{% static 'assets/js/shared/jquery.cookie.js' %}" type="text/javascript"></script> -->
+  </body>
+  <script>
+    $("#regbtn").click(function(){
+    fname=$('#fname').val();
+    email=$('#email').val();
+    phone=$('#phone').val();
+    addr=$('#addr').val();
+    lat=$('#lat').val();
+    longg=$('#long').val();
+    uname=$('#uname').val();
+    pswrd=$('#pswrd').val();
+    pswrd2=$('#pswrd2').val();
+    var pwd_expression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;;
+		var letters = /^[a-zA-Z\s]+$/
+		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var unmpattern=/^[a-zA-Z][a-zA-Z0-9.,$;]+$/
+      if(fname==""){
+          alert("Please enter Store Name first!");
+      }
+      
+    else if(fname.length<4){
+      alert("Name length should be greater than 4")
+    }
+    else if(email=='')
+		{
+			alert('Please enter your user email id');
+		}
+		else if (!filter.test(email))
+		{
+			alert('Invalid email format');
+		}
+    else if(phone==""){
+      alert("Please enter phone number")
+    }
+    else if(phone==""){
+      alert("Please enter phone number")
+    }
+    else if(phone.length!=10){
+      alert("Phone number must be 10 digit number")
+    }
+    
+    else if(addr==""){
+      alert("Please enter address of user")
+    }
+    else if(lat==""){
+      alert("Please enter latitude")
+    }
+    else if(longg==""){
+      alert("Please enter longitude")
+    }
+    else if(uname==""){
+      alert("Please enter username")
+    }
+    else if(!(/^[a-zA-Z]+/).test(uname))
+    {
+      alert('Username must start with a letter')
+    }
+    else if(uname.length<5){
+      alert("Length of username should be greater than 5")
+    }
+    else if(pswrd==""){
+      alert("Enter your password")
+    }
+    
+    else if(!pwd_expression.test(pswrd)){
+      alert("Upper case, Lower case, Special character and Numeric letter are required in Password field\n Length should be greater than 8")
+    }
+    else if(pswrd2!=pswrd){
+      alert("Passwords are must be same!")
+    }
+      else{
+        $.ajax({url:"/SaveStore/",
+          data:{
+              "fname":fname,
+              "email":email,
+              "phone":phone,
+              "addr":addr,
+              "lat":lat,
+              "longg":longg,
+              "uname":uname,
+              "pswrd":pswrd,
+
+          },
+      success:function(da){
+                 
+             if(da.status==1)  {
+               alert("Registration Sucessfull!!\nWait for admin approval")
+               window.location.href="{% url 'Regmed' %}"
+             }  
+             else{
+               alert("Oops!!! some error occured\nTry again later")
+             }
+          
+      }
+    });
+    
+      }
+      
+  }); 
+  </script>
+</html>
